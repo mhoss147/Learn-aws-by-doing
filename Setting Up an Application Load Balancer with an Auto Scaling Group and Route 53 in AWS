@@ -1,0 +1,43 @@
+# Setting Up an Application Load Balancer with an Auto Scaling Group and Route 53 in AWS
+
+
+- Description
+
+In this hands-on lab, we will set up an Application Load Balancer with an Auto Scaling group and Route 53 to make our website highly available to all of our users.
+
+First, we will create and configure an Application Load Balancer. Then, we'll create and configure Auto Scaling and review how it works in different scenarios. 
+
+Finally, we will configure a Route 53 CNAME alias record that will be an alias for our Application Load Balancer to serve our website to all users.
+
+
+- Additional Information and Resources
+
+Log in to the live AWS environment using the credentials provided. Make sure you're in the N. Virginia (us-east-1) region throughout the lab.
+
+The file containing the Bash script for this hands-on lab is located in the downloads section of this course, or you can use the following link to access the file:
+
+https://linuxacademy.com/cp/guides/download/refsheets/guides/refsheets/basic-apacheinstall-bash_1540027005.txt
+
+Or copy and paste the below:
+
+        #!/bin/bash
+        yum update -y
+        yum install httpd -y
+        service httpd start
+        chkconfig httpd on
+
+
+
+# Create and Configure an Application Load Balancer
+
+
+    Create and configure an Application Load Balancer.
+    Choose name.
+    Select only HTTP and select both Availability Zones.
+    Choose existing security group.
+    Choose name for target group.
+    Under Advanced Settings: 3,2,5,10 to speed IP our timeouts. (Remember the ALS is looking for a 200 status code to pass the health checks.)
+    Ignore all error messages.
+
+
+
