@@ -57,12 +57,71 @@
     
     [ec2-user@ip-10-0-0-75 ~]$ aws s3 ls
     
-    - 
+    - install boto3
+    
     [ec2-user@ip-10-0-0-75 ~]$ sudo pip install boto3
     
+   # if you get error message follow these steps:
     
+    - determine if Python 3 is already installed on the host.
+
+            [ec2-user ~]$ yum list installed | grep -i python3
+            
+            
+        
+
+        - Python 3 not installed output example
+
+        [ec2-user ~]$ yum list installed | grep -i python3
+        [ec2-user ~]$
+
+        [ec2-user ~]$ python3
+        -bash: python3: command not found
+
+
+        - 
+
+        - Python 3 already installed output example:
+
+        [ec2-user ~]$ yum list installed | grep -i python3
+
+        python3.x86_64                        3.7.4-1.amzn2.0.4              @amzn2-core
+        python3-libs.x86_64                   3.7.4-1.amzn2.0.4              @amzn2-core
+        python3-pip.noarch                    9.0.3-1.amzn2.0.1              @amzn2-core
+        python3-setuptools.noarch             38.4.0-3.amzn2.0.6             @amzn2-core
+
+- [ec2-user ~]$ whereis python3
+
+
+            python3: //usr/bin/python3 /usr/bin/python3.7 /usr/bin/python3.7m /usr/lib/python3.7 /usr/lib64/python3.7 /usr/include/python3.7m /usr/share/man/man1/python3.1.gz
+            
+            
+- Create a virtual environment under the ec2-user home directory 
+
+
+[ec2-user ~]$ python3 -m venv my_app/env
+
+
+- Activate the virtual environment and install Boto 3
+
+[ec2-user ~]$ source ~/my_app/env/bin/activate
+
+(env) [ec2-user ~]$
     
+ - Make sure that you have the latest pip module installed within your environment.
+ 
+ (env) [ec2-user ~]$ pip install pip --upgrade
+ 
+ 
+ - Use the pip command to install the Boto 3 library within our virtual environment.
+ 
+ (env) [ec2-user ~]$ pip install boto3
+ 
+   
     [ec2-user@ip-10-0-0-75 ~]$ python
+    
+  # send text messages
+  
     
     >>> import boto3
     
