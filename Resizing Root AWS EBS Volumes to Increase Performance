@@ -1,0 +1,80 @@
+#  Resizing Root AWS EBS Volumes to Increase Performance 
+
+
+
+- Resizing Root EBS Volumes
+
+As administrators monitor the volumes of EC2 instances, it is sometimes necessary to resize a root EBS volume. 
+
+Increased storage capacity is no the only reason this may be required. As EBS volumes increase in size, 
+
+the base IOPS performance also increases. It is possible to be required to resize a volume that does not need more space 
+
+based on IOPS performance alone. In this case, the goal is for the root EBS volumes to have a base IOPS of 120. 
+
+This video provides a detailed walkthrough for changing the root EBS volume size on EC2 instances. 
+
+Both standalone and instances from an Auto Scaling group will be modified.
+
+
+
+- Create an EBS Snapshot
+
+Create an EBS snapshot from one of the existing EC2 instance volumes.
+
+    Find the root volume of the bastion host
+    Check the box beside it on the "Volumes" page
+    Click "Actions"
+    Choose "Create Snapshot"
+    Add a description, click "Create Snapshot"
+    Click "Close"
+
+
+Create a new (larger) EBS Volume
+
+Using the snapshot you just created, provision a new EBS volume from the snapshot that provides a higher amount of IOPS.
+
+    Check the box beside your new Snapshot
+    Click "Actions"
+    Choose "Create Volume"
+    Change size to 40 GB
+    Click "Create Volume"
+    Click "Close"
+
+check_circle
+Attach the (larger) EBS volume to an EC2 instance
+
+Replace an existing (root) EBS volume that is attached to an EC2 instance with the new (larger) EBS volume that you just created. The new volume needs to replace the old volume as the root volume.
+
+    Stop the Bastion Host
+    On the "Volumes" page, check the box beside the 8GB volume attached to the Bastion Host
+    Click "Actions", Choose "Detach Volume"
+    Check the box next to the new larger volume
+    Click "Actions", Choose "Attach Volume"
+    Choose the stopped Bastion Host for "instance"
+    "Device should be "/dev/xvda"
+    Click "Attach"
+
+check_circle
+Create a new Auto-scaling Launch Configuration and Update the existing Auto-scaling Group
+
+Create a new auto-scaling launch configuration that uses the new (larger) EBS volume for created instances. Then update the existing Auto-scaling group to use the new launch configuration.
+
+    Copy the user-data from the existing Launch Configuration
+    Click "Create a Launch Configuration"
+    Click "Select" beside "Amazon Linux" to select the AMI
+    Leave t2.micro chosen, click "Next: Configure details"
+    Add a Name
+    Click "Advanced Details", copy in the user-data from the orginal Launch Configuration
+    Change "IP Address Type" to "Do not assign..."
+    Click "Next:Add storage"
+    Change the volume size to 40GB, Click "Next:Configure Security Group"
+    Choose the existing "WebServerSecurityGroup"
+    Click "Review", Click "Create launch configuration"
+    Choose to "Proceed without a key pair"
+    Click "Close"
+    Navigate to the Auto Scaling Groups Page
+    Edit the existing AutoScaling Group to use the new launch configuration
+    Terminate the WordPress instances one at a time to update the volume size
+
+
