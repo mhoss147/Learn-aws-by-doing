@@ -120,6 +120,15 @@
    
     [ec2-user@ip-10-0-0-75 ~]$ python
     
+    
+    - Use the deactivate command to exit the virtual environment.
+
+        (env) [ec2-user ~]$ deactivate
+
+        [ec2-user@ip-10-0-0-75 ~]$ python
+
+
+    
   # send text messages
   
     
