@@ -55,12 +55,51 @@ Replace an existing (root) EBS volume that is attached to an EC2 instance with t
     "Device should be "/dev/xvda"
     Click "Attach"
 
-check_circle
+ssh to bastion server:
+
+cloud_user@sorowar0073c:~$ ssh cloud_user@publicIP
+
+
+Password: provided in lab
+
+- see the root volume
+
+
+[cloud_user@ip-10-99-1-227 ~]$ lsblk
+
+
+
+
+
 Create a new Auto-scaling Launch Configuration and Update the existing Auto-scaling Group
 
-Create a new auto-scaling launch configuration that uses the new (larger) EBS volume for created instances. Then update the existing Auto-scaling group to use the new launch configuration.
+Create a new auto-scaling launch configuration that uses the new (larger) EBS volume for created instances. 
+
+Then update the existing Auto-scaling group to use the new launch configuration.
 
     Copy the user-data from the existing Launch Configuration
+    
+    --------------------------
+    
+            #!/bin/bash
+            yum update -y
+            yum install -y httpd24 php70 mysql56-server php70-mysqlnd git
+            cd /var/www/html
+            git clone https://github.com/linuxacademy/content-aws-sysops-administrator.git
+            cd content-aws-sysops-administrator/wp-site/
+            mv * /var/www/html
+            groupadd www
+            usermod -a -G www ec2-user
+            chown -R root:www /var/www
+            chmod -R 2775 /var/www
+            echo '<?php phpinfo(); ?>' > /var/www/html/phpinfo.php
+            service httpd start
+            chkconfig httpd on
+            service mysqld start
+            chkconfig mysqld on
+
+
+    ------------------------
     Click "Create a Launch Configuration"
     Click "Select" beside "Amazon Linux" to select the AMI
     Leave t2.micro chosen, click "Next: Configure details"
