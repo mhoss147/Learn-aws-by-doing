@@ -1,0 +1,105 @@
+# Create a Custom AMI in AWS
+
+# first will create custom machine
+
+
+- Additional Information and Resources
+
+Please go ahead and log in to the live environment with the cloud_user credentials provided. Make sure you are using us-east-1 as your region throughout the lab.
+
+To connect to the instance we will use the Mac Terminal app. If you are using Windows, you will need an SSH client such as Putty.
+
+When launching an instance, please use the Amazon Linux AMI
+
+If you use the Instant Terminal, allow all IPs when configuring your Security Group for SSH.
+
+- before install apache 
+
+$ sudo yum update -y
+
+
+- install apache
+
+$ sudo yum install - y httpd php          (when installing apache and php)
+
+
+- start apache
+
+$ sudo systemctl start httpd
+
+$ sudo systemctl enable httpd
+
+- to start apache automatically at boot
+
+$ sudo chkconfig httpd on
+
+- check, in web browser type: youInstancePublicIP ((like,   107.23.104.44)
+
+
+- install php
+
+$ sudo usermod -a -G apache ec2-user
+
+
+- change its ownership
+
+$ sudo chown -R ec2-user:apache /var/www
+
+
+- create the php website
+
+$ echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+
+
+- in web browser type: youInstancePublicIP/phpinfo.php      (like,    107.23.104.44/phpinfo.php)
+
+so our machine is redy to create AMI
+
+
+
+# now our machine is redy to create AMI; will create the AMI
+
+select your instance in console> actions> image> create image> give a name and description> hit create image
+
+
+now its creating the snapshot of your instance
+
+got to AMIs tab in console to check ami
+
+
+ami is region specific, if you want to use it in different region you have to copy it
+
+
+- Note: (to copy AMIs
+
+in console select AMI tab> select AMI you want to copy> actions> copy ami> select destination region>  )
+
+
+# lauch instance from AMI
+
+
+in console go to instances> launch instances> from the left pane select MY AMIs tab> select the ami image> ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
