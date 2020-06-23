@@ -103,8 +103,12 @@ Then update the existing Auto-scaling group to use the new launch configuration.
     Click "Create a Launch Configuration"
     Click "Select" beside "Amazon Linux" to select the AMI
     Leave t2.micro chosen, click "Next: Configure details"
+    
     Add a Name
-    Click "Advanced Details", copy in the user-data from the orginal Launch Configuration
+    
+    Click "Advanced Details", copy in the user-data (see above) from the orginal Launch Configuration
+    
+        
     Change "IP Address Type" to "Do not assign..."
     Click "Next:Add storage"
     Change the volume size to 40GB, Click "Next:Configure Security Group"
@@ -114,6 +118,14 @@ Then update the existing Auto-scaling group to use the new launch configuration.
     Click "Close"
     Navigate to the Auto Scaling Groups Page
     Edit the existing AutoScaling Group to use the new launch configuration
-    Terminate the WordPress instances one at a time to update the volume size
+    
+    in Details tab, edit Launch Configuration to yourOne> save
+    
+        
+    Terminate the WordPress instances one at a time 
+    
+    refresh the page> Auto Scaling group will launch new instance based on new launch config> 
+    
+    => got instance Description tab below at check root vol size
 
 
