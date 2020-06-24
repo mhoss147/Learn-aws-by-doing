@@ -1,0 +1,52 @@
+# AWS ELB Connectivity Troubleshooting Scenario
+
+
+- Description
+
+Welcome to this hands-on AWS Learning Activity for troubleshooting EC2 connectivity issues.
+
+The goal of this activity is to fix the broken environment and achieve the goal as outlined below. 
+
+The first video in this activity presents the scenario and the goal, while the second video provides the solution (if needed). 
+
+Do your best to solve the connectivity issue without viewing the solution video.
+
+Goal: Fix the connectivity issue in the AWS environment so that you can view the Linux AMI/Apache test page of the provisioned EC2 instances via the ELB's DNS name.
+
+Note/Hint: If your Instances don't show "In-Service" after a bit, try toggling the check type to http then back to tcp port 80.
+
+Good luck!
+
+
+
+- Additional Information and Resources
+
+Please make sure you are working in the us-east-1 (N. Virginia) region.
+
+Goal: Fix the connectivity issue in the AWS environment so that you can view the Linux AMI/Apache test page of the provisioned EC2 instances via the ELB's DNS name.
+
+
+- Issue/Solution Hint #1
+
+
+The Issue:
+
+    The ELB's security group does not allow HTTP traffic
+
+How to fix the issue:
+
+    Add an allow rule for HTTP traffic (port 80) to the ELB's security group
+
+
+- Issue/Solution Hint #2
+
+The Issue:
+
+    EC2 instance health checks are not passing
+
+How to fix the issue:
+
+    Change health check "ping port" on the ELB to port 80
+
+
+
