@@ -1,0 +1,68 @@
+# Managing DNS Records with AWS Route 53
+
+
+
+- Additional Information and Resources
+
+Make sure that when you eventually navigate to the Route 53 hosted zone the only DNS records you see are the NS and SOA records - if there are others there you can delete them.
+
+User Data code snippet for this lab:
+
+#!/bin/bash
+yum update -y
+yum install -y httpd
+cp /usr/share/httpd/noindex/index.html /var/www/html/index.html
+service httpd start
+
+
+- Create Two EC2 Instances
+
+
+Inside of the AWS console, create two EC2 instances that you can later attach to an Elastic Load Balancer. Follow these steps for the creation process:
+
+    Navigate to the EC2 portion of the console
+    Press Launch Instances
+    Pick an Amazon Linux AMI
+    Select the T2 Micro free tier eligible instance type
+    On the Configure Instance step make sure that the Linux Academy VPC is selected
+    Make sure to select a different subnet for each of the two instances
+    Make sure to change Auto-assign Public IP address to Enable
+    Add a User Data Script under the advanced details section (see the description of this activity for the code you need)
+    Press Next a few times until you get to the Confiure Security Group step
+    Create two instances:
+        Create a new security group and add HTTP access to the security group
+        Make sure to select the security group you just created for the previous instance
+    Press Next and press the button to launch the instance (you will have to create a keypair to do this step)
+    Repeat these steps again, but make sure to note the differences between the first and second instance's creation process here
+
+
+- Create an Elastic Load Balancer
+
+Create an Elastic Load Balancer in the AWS console:
+
+    Navigate to the Load Balander section of the EC2 console
+    Press Create load balander
+    Select Application load balancer
+    Give the load balancer a name
+    Make sure to include the two Availability zones for this load balancer
+    Skip over the Configure Security Settings step
+    On the Configure Security Groups step create a new security group with the defaults
+    On the Configure Routing step make sure you select New target group and name your target group
+    Under Advanced health check settings set Healthy Threshold to 2
+    Wait a few minutes, then test out your new ELB from the DNS name provided under the ELB's description in the EC2 console
+
+
+- Create Route 53 Record Sets
+
+Create two aliased A Records inside the Route 53 hosted zone you are provided that point to the Elastic Load Balander domain:
+
+    Navigate to the Route 53 portion of the console
+    Enter the hosted zone for the custom domain you are provided
+    Press the Create Record Set button and select the A - IPv4 Address type
+    Make sure Alias is selected as Yes
+    Find your Elastic Load Balancer domain in the dropdown, select that and then press Create down at the bottom of the page
+    Repeat this process except make sure to enter www in the Name for one of the two records, so that you have an A record for the www subdomain too
+
+
+
+
