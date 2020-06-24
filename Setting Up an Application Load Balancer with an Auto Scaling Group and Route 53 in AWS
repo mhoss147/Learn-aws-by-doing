@@ -41,3 +41,19 @@ Or copy and paste the below:
 
 
 
+- Create and Configure an Auto Scaling Group
+
+
+    In the EC2 console, under Auto Scaling, select Launch Configurations.
+    Choose AMI, and add a launch configuration name.
+    Under Advanced Details, paste in the provided Bash script to configure our EC2 instance as a web server.
+    Make sure to select Assign a public IP address to every instance.
+    Choose the existing security group.
+    Create a new key pair, and download it somewhere safe.
+    Click Create Auto Scaling group.
+    Add a name, make sure to choose the VPC with two subnets, change the health checks to 180 seconds, use scaling policies for 1 and 3, and choose CPU usage and set it to 80%.
+    Now edit by selecting Actions.
+    Add your target group and update your desired capacity to 2 and a minimum of 2, and click Save.
+
+
+
