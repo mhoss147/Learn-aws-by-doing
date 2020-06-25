@@ -1,0 +1,28 @@
+# Implementing VPC Peering on AWS
+
+
+
+- Description
+
+In this live environment you will learn how to create and configure VPC peering within AWS. 
+
+VPC peering is a feature of AWS which allows cross-VPC communication without additional hardware or software solutions. 
+
+VPC peering is a feature you will use daily in production environments, and it's useful to know for all of the AWS exams.
+
+The environment is split into three stages. There is an architectural overview first, followed by the creation and configuration of a VPC peer, 
+
+and finally the live environment will finish by demonstrating the limitations of VPC peering and some advanced features.
+
+By the end of the learning activity you will be able to comfortably implement VPC peering, know it's limitations 
+
+and perhaps more importantly understand when and why you would use the feature.
+
+For Windows specific connection information, see: 
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html 
+
+https://aws.amazon.com/blogs/security/securely-connect-to-linux-instances-running-in-a-private-amazon-vpc/
+
+
+
