@@ -1,0 +1,75 @@
+# Copy Files to S3 using AWS-CLI
+
+
+- Prerequisites
+
+    An active AWS account.
+    Install AWS CLI as mentioned in the official documentation. (https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+    Configure AWS CLI as mentioned here. (https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+    
+    
+- Create a new AWS S3 Bucket
+
+aws s3 mb s3://bucket_name
+
+
+- Delete AWS S3 Bucket
+
+aws s3 rb s3://bucket_name 
+
+aws s3 rb s3://bucket_name --force  (delete the bucket with all the contents.)
+
+
+- List all Buckets in S3
+
+aws s3 ls
+
+
+- Copy from Local to Amazon S3
+
+
+
+- Copy Multiple Files to Amazon S3
+
+aws s3 cp directory_path s3://bucket_name --recursive
+
+
+
+- Delete all files inside the bucket
+
+aws s3 rm s3://bucket_name --recursive
+
+
+- Include/Exclude while copying
+
+aws s3 cp directory_path s3://bucket_name --recursive --exclude "*.log" --include "*.jpg"
+
+
+
+- Include/Exclude while deleting
+
+aws s3 rm s3://bucket_name --recursive --exclude "*.png"
+
+
+
+- Setup Permissions to files
+
+
+aws s3 cp . s3://bucket_name --recursive --acl public-read
+
+
+- Copy only Missing Objects
+
+
+aws s3 sync filename s3://bucket_name
+
+
+Reference:  https://www.cloudbooklet.com/aws-copy-files-to-s3-using-aws-cli/
+
+
+
+
+
+
+
+    
