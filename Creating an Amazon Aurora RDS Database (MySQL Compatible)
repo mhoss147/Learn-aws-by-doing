@@ -1,0 +1,28 @@
+# Creating an Amazon Aurora RDS Database (MySQL Compatible)
+
+
+- Description
+
+In this hands-on lab, we will create an Aurora MySQL database. First, we will verify that the security groups, network ACL (NACL), 
+
+and route tables are all configured to allow communication between an instance in a public subnet and an RDS database in a private subnet. 
+
+After verifying the appropriate settings are in place, we will create the database. Once that is done, 
+
+we will use an EC2 instance as a bastion to allow us to connect to our private database from an external source. 
+
+We will utilize MySQL Workbench to connect to our private RDS Aurora database through the public EC2 bastion.
+
+
+
+- Additional Information and Resources
+
+Log in to the live AWS environment using the credentials provided, and make sure you are in the us-east-1 region.
+
+During the Aurora Database Creation steps, please ensure you have not selected "Easy Create" 
+
+as this results in a default instance class selection of R5, which will result in an explicit deny.
+
+Download and install MySQL Workbench on your desktop. This application is necessary to connect to the MySQL database. 
+
+You can download the file directly from MySQL.
