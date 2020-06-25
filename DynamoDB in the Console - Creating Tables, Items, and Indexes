@@ -1,0 +1,37 @@
+# DynamoDB in the Console - Creating Tables, Items, and Indexes
+
+
+- Create a DynamoDB Table
+
+ Use the AWS DynamoDB console to create a DynamoDB table. Name it whatever you like and give it a provisioned throughput of under 10 RCUs and WCUs.
+
+    Log in to the AWS console with the provided credentials
+    Navigate to the DynamoDB portion of the console
+    Create a DynamoDB table with a local secondary index
+
+
+
+
+- Add Items to Your Table
+
+
+After creating your DynamoDB MustNotes table add some items to it.
+
+    Create the DynamoDB table (in the previous step)
+    Add items to the table with the Artist and SongTitle attributes as well as adding a few with the Rating attribute
+    Query for the items using the AWS DynamoDB Console
+
+
+
+
+- Add a Global Secondary Index to your Table
+
+Using the AWS Console, add a Global Secondary Index to your table.
+
+    Select your DynamoDB table
+    Open the indexes section of the DynamoDB console
+    Create a global secondary index for your table
+
+
+
+
