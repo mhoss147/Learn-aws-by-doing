@@ -1,0 +1,94 @@
+# AWS EC2 Custom Logging with CloudWatch
+
+
+- make sure you are using us-east-1 (N. Virginia) as the selected region
+
+- Create one EC2 instance
+
+
+    From the AWS Management Console Dashboard go in to EC2
+    click 'Launch Instance'
+    'Select' and Amazon Linux AMI (not the Amazon Linux 2 AMI)
+    Select 't2.micro'
+    Click 'Review and Launch'
+    Click 'Launch'
+    Choose a Key Pair
+    Click 'Launch Instances'
+
+$ ssh publicIP (usong putty)
+
+
+- do an update
+
+[ec2-user@ip-10-0-0-175 ~]$ sudo yum update -y
+
+
+
+- install awslogs
+
+
+[ec2-user@ip-10-0-0-175 ~]$ sudo yum install -y awslogs
+
+
+- goto etc/awslogs
+
+
+[ec2-user@ip-10-0-0-175 ~]$ cd /etc/awslogs/
+
+
+- see files
+
+[ec2-user@ip-10-0-0-175 awslogs]$ ls
+
+awscli.conf  awslogs.conf  config  proxy.conf
+
+
+
+- turn on log service
+
+[ec2-user@ip-10-0-0-175 awslogs]$ sudo service awslogs start
+
+
+
+    - If you are running Amazon Linux 2, start the awslogs service with the following command.
+
+              sudo systemctl start awslogsd
+
+
+- set to log start during restart
+
+
+[ec2-user@ip-10-0-0-175 awslogs]$ sudo chkconfig awslogs on
+
+
+
+      - If you are running Amazon Linux 2, use the following command to start the service at each system boot.
+
+              sudo systemctl enable awslogsd.service
+              
+              
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
