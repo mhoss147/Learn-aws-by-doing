@@ -3,7 +3,7 @@
 
 - make sure you are using us-east-1 (N. Virginia) as the selected region
 
-- Create one EC2 instance
+# Create one EC2 instance
 
 
     From the AWS Management Console Dashboard go in to EC2
@@ -66,8 +66,18 @@ awscli.conf  awslogs.conf  config  proxy.conf
 
               sudo systemctl enable awslogsd.service
               
-              
-              
+
+
+# Verify CloudWatch Logs sent from EC2
+
+
+    
+    From the AWS Management Console Dashboard go in to CloudWatch
+    Click 'Logs'
+    Click '/var/log/messages'
+    Click on the instance id to view the log files
+
+          
 
 
 
