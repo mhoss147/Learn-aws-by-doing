@@ -4,7 +4,9 @@
 - Prerequisites
 
     An active AWS account.
+    
     Install AWS CLI as mentioned in the official documentation. (https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+    
     Configure AWS CLI as mentioned here. (https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
     
     
