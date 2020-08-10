@@ -32,11 +32,17 @@ Or copy and paste the below:
 
 
     Create and configure an Application Load Balancer.
+    
     Choose name.
+    
     Select only HTTP and select both Availability Zones.
+    
     Choose existing security group.
+    
     Choose name for target group.
+    
     Under Advanced Settings: 3,2,5,10 to speed IP our timeouts. (Remember the ALS is looking for a 200 status code to pass the health checks.)
+    
     Ignore all error messages.
 
 
